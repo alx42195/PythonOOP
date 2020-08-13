@@ -7,7 +7,7 @@
 
 class Editor:
     def view_document(self):
-        return f"You are in view mode only."
+        return f"You are in view mode."
 
     def edit_document(self):
         return f"No editing in free version, please buy a full version!"
@@ -16,6 +16,7 @@ class ProEditor(Editor):
     def edit_document(self):
         license_key = input("Please, enter your license key > ")
         if  license_key == "123abc)*":
+            print("You are now using full version.")
             return object
         else:
             print("Your key is incorrect")
@@ -26,9 +27,11 @@ class ProEditor(Editor):
 try1 = Editor()
 print(try1.view_document())
 print(try1.edit_document())
+print()
 try2 = ProEditor()
+print(try2.view_document())
 try2.edit_document()
-print(try2)
+
 
 
 
