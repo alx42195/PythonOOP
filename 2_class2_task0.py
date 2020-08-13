@@ -21,8 +21,7 @@ class Vehicle:
         self.usage = _usage
 
     def __str__(self):
-        return f" This is {self.transport_method} vehicle with {self.engine} type of engine for {self.usage} usage \
-        with {self.seats} seats"
+        return f" This is {self.transport_method} vehicle with {self.engine} type of engine for {self.usage} usage with {self.seats} seats"
 
     @staticmethod
     def beeping():
@@ -37,7 +36,7 @@ class Car(Vehicle):
 
     def __str__(self):
         return f" This is {self.transport_method} vehicle with {self.engine} type of engine for {self.usage} usage \
-                with {self.seats} seats. It has {self.body_type} body and {self.color} color"
+with {self.seats} seats. It has {self.body_type} body and {self.color} color"
 
 class Sport_car(Car):
     def __init__(self, transport_method, engine, usage, seats, body_type, color, upgrades):
@@ -47,8 +46,7 @@ class Sport_car(Car):
 
     def __str__(self):
         return f" This is sport {self.transport_method} vehicle with {self.engine} type of engine for {self.usage} usage \
-                   with {self.seats} seats. It has {self.body_type} body and {self.color} color. \
-                   As a sport car is has {self.upgrades}."
+with {self.seats} seats. It has {self.body_type} body and {self.color} color. As a sport car is has {self.upgrades}."
 
 # Сделать классовые методы для разных видов спортивных машин из upgrages
 
@@ -60,43 +58,86 @@ class Aircraft(Vehicle):
         self.engines_number = engines_number
 
     def __str__(self):
-        return f" This is {self.jet_type}  with {self.engines_number} engines for {self.usage} usage \
-        with {self.seats} seats"
+        return f" This is {self.jet_type}  with {self.engines_number} engines for {self.usage} usage with {self.seats} seats"
 
 # Дописать
     @classmethod
     def from_vehicle(cls, vehicle):
-        pass
+        transport_method = vehicle.transport_method
+        engine = vehicle.engine
+        usage = vehicle.usage
+        seats = vehicle.seats
+        jet_type = "small private jet"
+        engines_number = 2
         return cls(transport_method, engine, usage, seats, jet_type, engines_number)
 
 class Ship(Vehicle):
+    def __init__(self, transport_method, engine, usage, seats, tonnage, flag):
+        super().__init__(transport_method, engine, usage, seats)
+        self.tonnage = tonnage
+        self.flag = flag
+
+# class Amphibia(Vehicle,Aircraft,Ship):
+#     def __init__(self, transport_method, engine, usage, seats, jet_type, tonnage, flag, max_distance):
+#         super().__init__(transport_method, engine, usage, seats, jet_type, tonnage, flag)
+#         self.max_distance = max_distance
+
+# class Amphibia(Vehicle,Aircraft,Ship):
+#     def __init__(self, transport_method, engine, usage, seats, jet_type, tonnage, flag, max_distance):
+#         super(Vehicle).__init__(transport_method, engine, usage, seats)
+#         super(Aircraft).__init__(jet_type)
+#         super(Ship).__init__(tonnage, flag)
+#         self.max_distance = max_distance
+
+class Purchase:
     pass
 
-class Amfibia(Vehicle,Aircraft,Ship):
+class Utilization:
     pass
 
 
+
+# Проверка создания объектов Vehicle, Car, Sport_car
 car1 = Vehicle("road", "diesel", "civil", 4)
 car2 = Car("road", "diesel", "civil", 4, "sedan", "black")
 car3 = Sport_car("road", "petrol", "civil", 2, "coupe", "red", "enforced engine")
+
+# Проверка работы __str__
 print(car1, car2, car3, sep="\n")
+
+# Проверка работы статического метода - строка 27
 car1.beeping()
 print()
+
+# Создание объекта и проверка работы класса property, getters and setters, строки 12-21
 car4 = Vehicle("road", "diesel", "military", 8)
 print(car4.description)
 print(car3.description)
 print()
+        # проверяю если поменять road на sea, произойдут ли изменения в данных атрибутов
 car4.transport_method = "sea"
 print(car4.description)
 print(car3.description)
 print()
+        # проверяю если поменять description, поменяются ли transportation_method and usage, как это и должно в setter
 car3.description = "air vehicle for civil usage"
 print(car4.description)
 print(car3.description)
 print()
+
+# проверка работоспособности класса Aircraft
 vehicle5 = Aircraft("air", "gasoline", "military", 12, "helicopter", 2)
 print(vehicle5)
 print()
-vehicle5.from_vehicle("small jet",2)
-print(vehicle5)
 
+# проверка работоспособности метода класса, создание объекта воздушного средства из транспортного средства строки 67-75
+private_jet = Aircraft.from_vehicle(car4)
+print(private_jet)
+print()
+private_jet.usage = "civil"
+print(private_jet)
+
+# Вопросы
+
+# Вопрос по строкам 80-90. Пытаюсь сделать множественное наследование и функцией super().__init__() скопировать нужные
+# аттрибуты. Выдает ошибку. Пробовал разбить super по объектам, все равно ошибка. Как правильно?
