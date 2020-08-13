@@ -48,7 +48,6 @@ class Sport_car(Car):
         return f" This is sport {self.transport_method} vehicle with {self.engine} type of engine for {self.usage} usage \
 with {self.seats} seats. It has {self.body_type} body and {self.color} color. As a sport car is has {self.upgrades}."
 
-# Сделать классовые методы для разных видов спортивных машин из upgrages
 
 class Aircraft(Vehicle):
     flag = "UA"
@@ -60,7 +59,7 @@ class Aircraft(Vehicle):
     def __str__(self):
         return f" This is {self.jet_type}  with {self.engines_number} engines for {self.usage} usage with {self.seats} seats"
 
-# Дописать
+# Создание воздушного судна из транспотного средства
     @classmethod
     def from_vehicle(cls, vehicle):
         transport_method = vehicle.transport_method
