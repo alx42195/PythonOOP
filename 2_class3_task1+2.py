@@ -55,34 +55,32 @@ def powering(user_list):
 
     return pownum
 
-# Записвываем знаки разрешенных операций в список, для облегчения проверки в будущем через "in'
-allowed=["*", "-", "/", "+", "^"]
-
 while True:
     operation = input("Enter operation sign, please (*), (/), (+), (-), (^). \nTo quit, please enter 'done' > ")
     if operation.lower() == "done":  # Ключевым словом выхода из цикла будет done
         print("Thank you for using the program!")
         break
-    elif operation not in allowed: # Возврат к началу цикла, если неподдерживаемый знак операции
-        print("Unsupported operation, please try again!")
-        continue
     else:
-        numbers_list = input("Enter the numbers separated by space > ").split(" ")
-        numbers_list = list_convertion(numbers_list) # Конвертация списка из str в float
-        if "*" in operation: # Защита от ввода типа "*" или (*), т.е. проверяем есть ли во всей строке операция
-            print(f"Your multiplication result is {multiplication(numbers_list)}")
-        elif "^" in operation:
-            print(f"Your putting into power result is {powering(numbers_list)}")
-        elif "-" in operation:
-            print(f"Your subtraction result is {subtraction(numbers_list)}")
-        elif "+" in operation:
-            print(f"Your sum result is {adding(numbers_list)}")
-        elif "/" in operation:
-            if 0 in numbers_list: # проверка деления на ноль
-                print("You have division by zero, please try again!")
-                continue
+        try:
+            numbers_list = input("Enter the numbers separated by space > ").split(" ")
+            if len(numbers_list) < 2:
+                raise IndexError("You have entered less than 2 numbers")
             else:
-                print(f"Your division result is {division(numbers_list)}")
-        else: # вывод в случае каких-либо иных непредвиденных ошибок ввода
-            print("There is an error, please try again!")
-            continue
+                numbers_list = list_convertion(numbers_list) # Конвертация списка из str в float
+                try:
+                    if "*" in operation: # Защита от ввода типа "*" или (*), т.е. проверяем есть ли во всей строке операция
+                        print(f"Your multiplication result is {multiplication(numbers_list)}")
+                    elif "^" in operation:
+                        print(f"Your putting into power result is {powering(numbers_list)}")
+                    elif "-" in operation:
+                        print(f"Your subtraction result is {subtraction(numbers_list)}")
+                    elif "+" in operation:
+                        print(f"Your sum result is {adding(numbers_list)}")
+                    elif "/" in operation:
+                        print(f"Your division result is {division(numbers_list)}")
+                    else:
+                        raise ValueError("Unsupported operation, please try again")
+                except (ValueError, ZeroDivisionError) as e:
+                    print(f"We have an issue. {e}")
+        except Exception as e:
+            print(f"We have an issue. {e}")
