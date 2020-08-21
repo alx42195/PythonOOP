@@ -13,13 +13,11 @@ class Car:
         return f"Car: {self.model}, Year: {self.year}, Color: {self.color}"
 
 class Car_showroom:
-    available_cars = []
+    def __init__(self):
+        self.available_cars = []
 
-# Хороший пример, если не добавить статический декоратор, и не убрать self,
-# то будет выдавать ошибку, что не хватает аргумента self
-    @staticmethod
-    def car_list():
-        return [(item.model, item.year, item.color) for item in Car_showroom.available_cars]
+    def car_list(self):
+        return [(item.model, item.year, item.color) for item in self.available_cars]
 
     def adding_car(self, *object_car):
         for car in object_car:
@@ -28,13 +26,13 @@ class Car_showroom:
 
     def selling_car(self, selected_model):
         self.selected_model = selected_model
-        for item in Car_showroom.available_cars:
+        for item in self.available_cars:
             if item.model == self.selected_model:
                 print(f"{item} -- sold")
                 return self.available_cars.remove(item)
 
     def __str__(self):
-        return f"{[(item.model, item.year, item.color) for item in Car_showroom.available_cars]}"
+        return f"{[(item.model, item.year, item.color) for item in self.available_cars]}"
 
 obj1 = Car("Tesla",2020,"red")
 obj2 = Car("BMW", 2010, "black")
@@ -59,6 +57,7 @@ print()
 print(obj4)
 print()
 print(showroom1)
+print(dir(showroom1))
 
 
 
