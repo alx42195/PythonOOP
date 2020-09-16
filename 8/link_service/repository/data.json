@@ -1,0 +1,55 @@
+[
+    {
+        "name": "John Smith",
+        "email": "jsmith@hotmail.com",
+        "login": "jsmith123",
+        "password": "lalala123",
+        "links": {
+            "mail": "www.ukr.net",
+            "weather": "www.sinoptik.ua",
+            "news": "www.korrespondent.net",
+            "web": "www.google.com"
+        }
+    },
+    {
+        "name": "Petro Ivanchuk",
+        "email": "pivanchuk@urk.net",
+        "login": "piva92",
+        "password": "blabla321",
+        "links": null
+    },
+    {
+        "name": "Brad Pitt",
+        "email": "bpit@hotmail.com",
+        "login": "bpit75",
+        "password": "lalala456",
+        "links": {
+            "mail": "www.hotmail.com",
+            "find": "www.google.com"
+        }
+    },
+    {
+        "name": "Angela Merkel",
+        "email": "angela@gov.de",
+        "login": "angel123",
+        "password": "lalala123",
+        "links": null
+    },
+    {
+        "name": "Vova Putin",
+        "email": "puti@mail.ru",
+        "login": "pu",
+        "password": "lala666",
+        "links": {
+            "mail": "www.mail.ru",
+            "search": "www.yandex.ru"
+        }
+    },
+    {
+        "name": "",
+        "email": "",
+        "login": "",
+        "password": "",
+        "links": null
+    }
+]

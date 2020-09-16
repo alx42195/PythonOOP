@@ -1,0 +1,17 @@
+[
+    {
+        "username": "John Davis",
+        "email": "john.davis@gmail.com",
+        "valid": true
+    },
+    {
+        "username": "Jane Smith",
+        "email": "jane.smith@hotmail.com",
+        "valid": false
+    },
+    {
+        "username": "Martin Right",
+        "email": "martin.right@speedbox.com",
+        "valid": null
+    }
+]
